@@ -1,261 +1,607 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jhansilaxmi Neerudi | Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Neerudi Jhansilaxmi — Portfolio</title>
+
+  <!-- Aesthetic fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- AOS CSS (animate on scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Typed.js will be loaded in script -->
   <style>
-    /* ====== Global Styles ====== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Poppins', Arial, sans-serif;
-      background: #f9f9f9;
-      color: #333;
-      line-height: 1.6;
+    :root{
+      --bg: #0f1724;
+      --panel: #0b1220;
+      --muted: #94a3b8;
+      --accent: #22c55e;
+      --glass: rgba(255,255,255,0.04);
+      --card-shadow: 0 10px 30px rgba(2,6,23,0.6);
+      --card-radius: 14px;
+      --max-width: 1100px;
+      --trans: 300ms cubic-bezier(.2,.9,.3,1);
     }
 
-    /* ====== Header ====== */
-    header {
-      background: linear-gradient(135deg, #4CAF50, #2E7D32);
-      color: white;
-      text-align: center;
-      padding: 3rem 1rem;
-    }
-    header h1 {
-      margin-bottom: 0.5rem;
-      font-size: 2.5rem;
-    }
-    header p {
-      font-size: 1.2rem;
+    /* Light theme overrides (applies when body.light-mode) */
+    body.light-mode {
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --muted: #475569;
+      --accent: #16a34a;
+      --glass: rgba(2,6,23,0.03);
+      --card-shadow: 0 10px 30px rgba(15,23,42,0.08);
     }
 
-    /* ====== Navbar ====== */
-    nav {
-      position: sticky;
-      top: 0;
-      background: #333;
-      padding: 0.8rem;
-      display: flex;
-      justify-content: center;
-      z-index: 1000;
+    /* Reset + base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial;
+      background: linear-gradient(180deg,var(--bg), #071023 120%);
+      color: #e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      -webkit-tap-highlight-color: transparent;
+      padding-bottom:60px;
     }
-    nav a {
-      color: white;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:var(--max-width);margin:0 auto;padding:2rem}
+
+    /* Header / hero */
+    header.hero{
+      padding:3rem 1rem 1.5rem;
+      text-align:center;
+      background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(6,182,212,0.02));
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      position:relative;
+      overflow:visible;
     }
-    nav a:hover,
-    nav a.active {
-      color: #4CAF50;
+    .hero-inner{max-width:900px;margin:0 auto}
+    .hero h1{font-size:2.4rem;margin:0 0 .2rem;font-weight:800;letter-spacing:-0.6px}
+    .hero .subtitle{color:var(--muted);font-weight:500;margin-bottom:1rem}
+    .hero .type {color:var(--accent);font-weight:700}
+    .hero .cta{margin-top:1.2rem;display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap}
+    .btn{
+      background:var(--accent);
+      color: #04121a;
+      padding:.65rem .9rem;
+      border-radius:10px;
+      font-weight:700;
+      box-shadow:0 8px 18px rgba(16,185,129,0.12);
+      transition: transform var(--trans), box-shadow var(--trans);
+      border:0;cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(16,185,129,0.16)}
+    .btn.ghost{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.06)}
+
+    /* Navbar */
+    nav.navbar{
+      position:sticky;top:0;z-index:1200;backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(2,6,23,0.6), rgba(2,6,23,0.32));
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      padding:.6rem 1rem;
+      box-shadow: var(--card-shadow);
+    }
+    .nav-inner{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;gap:1rem;justify-content:space-between}
+    .brand{font-weight:800;color:var(--accent)}
+    .nav-links{display:flex;gap:.6rem;align-items:center}
+    .nav-links a{color: #cfe9e1;padding:.45rem .6rem;border-radius:8px;font-weight:600;opacity:.95}
+    .nav-links a.active{background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));color:var(--accent)}
+    .dark-toggle{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:.35rem .6rem;border-radius:8px;color:var(--muted);cursor:pointer}
+
+    /* Main sections */
+    section{padding:3rem 0}
+    h2.section-title{display:inline-block;border-bottom:3px solid var(--accent);padding-bottom:.25rem;margin-bottom:1rem;font-size:1.35rem}
+
+    /* About */
+    .about-grid{display:grid;grid-template-columns:1fr 360px;gap:1.25rem;align-items:center}
+    .card{
+      background:var(--panel);
+      border-radius:var(--card-radius);
+      padding:1.25rem;
+      box-shadow:var(--card-shadow);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .about-text p{color:var(--muted);margin:.6rem 0}
+    .profile-quick{display:flex;gap:.6rem;align-items:center;justify-content:flex-start}
+    .avatar{
+      width:92px;height:92px;border-radius:14px;background:linear-gradient(135deg, rgba(34,197,94,0.12), rgba(6,182,212,0.03));
+      display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent);font-size:1.05rem;
+      border:1px solid rgba(255,255,255,0.03)
+    }
+    .meta{color:var(--muted);font-size:.92rem}
+
+    /* Skills */
+    .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .skill-pill{display:inline-block;padding:.35rem .6rem;border-radius:999px;background:var(--glass);color:var(--muted);margin:.25rem .25rem;font-weight:600}
+    .progress{
+      background:rgba(255,255,255,0.03);height:12px;border-radius:999px;overflow:hidden;margin-top:.5rem;
+      box-shadow:inset 0 -2px 6px rgba(0,0,0,0.4);
+    }
+    .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent), #06b6d4);width:0%;transition:width 900ms cubic-bezier(.2,.9,.3,1)}
+
+    /* Projects grid */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+    .project-card{position:relative;padding:1rem;border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .28s;display:flex;flex-direction:column;gap:.6rem;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02)}
+    .project-card:hover{transform:translateY(-8px);box-shadow:0 18px 50px rgba(2,6,23,0.6)}
+    .project-title{font-weight:800}
+    .project-desc{color:var(--muted);font-size:.95rem}
+    .project-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto}
+    .project-tags span{background:rgba(255,255,255,0.03);padding:.35rem .6rem;border-radius:8px;color:var(--muted);font-weight:600;font-size:.82rem}
+
+    .project-actions{display:flex;gap:.5rem;margin-top:.6rem}
+    .small-btn{padding:.45rem .6rem;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+    .small-btn.ghost{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.03)}
+    .small-btn.primary{background:var(--accent);color:#021014}
+
+    /* Modal (project detail) */
+    .modal-wrap{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(2,6,23,0.6),rgba(2,6,23,0.8));z-index:1400;padding:1rem}
+    .modal{max-width:900px;width:100%;background:var(--panel);padding:1.2rem;border-radius:12px;box-shadow:var(--card-shadow)}
+    .modal .close{float:right;background:transparent;border:0;color:var(--muted);font-size:1rem;cursor:pointer}
+
+    /* Certifications */
+    .cert-grid{display:flex;gap:1rem;flex-wrap:wrap}
+    .cert{padding:.6rem .8rem;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02)}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 380px;gap:1rem}
+    form.contact-form{display:flex;flex-direction:column;gap:.6rem}
+    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:.6rem;border-radius:8px;color:inherit}
+    textarea{min-height:120px;resize:vertical}
+    .contact-info p{color:var(--muted);margin:.4rem 0}
+
+    /* Footer */
+    footer{padding:2rem 0;text-align:center;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .about-grid{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .mobile-nav{display:flex;gap:.6rem}
     }
 
-    /* ====== Sections ====== */
-    section {
-      padding: 4rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.8s ease-in-out;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    h2 {
-      border-bottom: 3px solid #4CAF50;
-      display: inline-block;
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.3rem;
-      font-size: 1.8rem;
-    }
-
-    /* ====== Skills ====== */
-    .skills span {
-      background: #4CAF50;
-      color: white;
-      padding: 0.5rem 1rem;
-      margin: 0.3rem;
-      display: inline-block;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      transition: transform 0.3s;
-    }
-    .skills span:hover {
-      transform: scale(1.1);
-    }
-
-    /* ====== Projects ====== */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    .project {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .project:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    }
-    .project h3 {
-      margin-bottom: 0.5rem;
-    }
-    .project a {
-      color: #4CAF50;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    /* ====== Footer ====== */
-    footer {
-      text-align: center;
-      background: #333;
-      color: white;
-      padding: 1rem;
-      margin-top: 3rem;
-    }
-    footer a {
-      color: #4CAF50;
-      text-decoration: none;
-    }
+    /* tiny helper */
+    .muted{color:var(--muted)}
   </style>
 </head>
 <body>
 
-  <!-- ====== Header ====== -->
-  <header>
-    <h1>Jhansilaxmi Neerudi</h1>
-    <p>Fresher | Software Engineer | AI & Data Science Enthusiast</p>
-  </header>
+  <!-- NAV -->
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="nav-inner container">
+      <div style="display:flex;gap:.8rem;align-items:center">
+        <div class="brand">Jhansilaxmi • Neerudi</div>
+        <div class="muted" style="font-weight:600;font-size:.9rem">AI • Data Science • Software</div>
+      </div>
 
-  <!-- ====== Navbar ====== -->
-  <nav>
-    <a href="#about" class="active">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#resume">Resume</a>
-    <a href="#contact">Contact</a>
+      <div style="display:flex;align-items:center;gap:.6rem">
+        <div class="nav-links" id="navLinks">
+          <a href="#about" class="active">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#certs">Certifications</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <button class="dark-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
+
+    </div>
   </nav>
 
-  <!-- ====== About Section ====== -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I’m <b>Jhansilaxmi Neerudi</b>, a Computer Science graduate with a strong passion for 
-       <b>Artificial Intelligence, Data Science, and Software Development</b>. I thrive on solving 
-       complex problems and transforming ideas into impactful, real-world solutions.</p>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner container">
+      <div data-aos="fade-up" data-aos-delay="50">
+        <h1>Hi — I’m <span style="color:var(--accent)">Neerudi Jhansilaxmi</span></h1>
+        <div class="subtitle muted">Computer Science graduate | AI & Data Science enthusiast | Problem solver</div>
+        <div class="subtitle" style="margin-top:.6rem;font-size:1.05rem">
+          <span class="muted">I build</span> <span class="type" id="typed"></span>
+        </div>
 
-    <p>I have hands-on experience in building <b>AI-driven applications</b>—from intelligent virtual 
-       interfaces to crime-prevention systems—showcasing my ability to blend 
-       <b>innovation, logic, and creativity</b>. My goal is to grow as a <b>future-ready engineer</b>, 
-       continuously learning and contributing to technologies that make a difference in people’s lives.</p>
-  </section>
-
-  <!-- ====== Skills Section ====== -->
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="skills">
-    <!-- Programming Languages -->
-    <span>Python</span><span>Java</span><span>C++</span><span>C</span>
-    <span>SQL</span><span>MySQL</span>
-    <span>HTML</span><span>CSS</span><span>JavaScript</span>
-
-    <!-- Frameworks & Libraries -->
-    <span>NumPy</span><span>Pandas</span><span>Django</span>
-
-    <!-- Developer Tools -->
-    <span>GitHub</span><span>Google Colab</span><span>Visual Studio Code</span>
-
-    <!-- Core CS & Academic Areas -->
-    <span>Data Structures</span><span>Operating Systems (Windows/Linux/Unix)</span>
-    <span>DBMS</span><span>OOP</span><span>Software Engineering</span>
-
-    <!-- AI/ML & Related -->
-    <span>Artificial Intelligence</span><span>Machine Learning</span>
-    <span>Computer Vision</span>
-  </div>
-</section>
-
-
-  <!-- ====== Projects Section ====== -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="project">
-        <h3>AI Virtual Mouse</h3>
-        <p>An AI-based virtual mouse system using computer vision, hand gestures, and voice recognition.</p>
-        <a href="https://github.com/Jhansi20037/AI-VIRTUAL-MOUSE" target="_blank">🔗 View on GitHub</a>
-      </div>
-      <div class="project">
-        <h3>Human Scream Detection</h3>
-        <p>A project designed to detect and analyze human screams to assist in crime prevention.</p>
-        <a href="https://github.com/Jhansi20037/Human-Scream-Detection-and-Analysis-for-Controlling-Crime-Rate" target="_blank">🔗 View on GitHub</a>
-      </div>
-      <div class="project">
-        <h3>Portfolio Website</h3>
-        <p>This personal portfolio showcasing my skills, projects, and achievements.</p>
-        <a href="#">🌐 Current Page</a>
+        <div class="cta" data-aos="fade-up" data-aos-delay="120">
+          <a class="btn" href="#projects">See Projects</a>
+          <a class="btn ghost" href="resume.pdf" target="_blank">Download Resume</a>
+        </div>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- ====== Resume Section ====== -->
-  <section id="resume">
-    <h2>Resume</h2>
-    <p><a href="resume.pdf" target="_blank">📄 Download My Resume (PDF)</a></p>
-  </section>
+  <main class="container" role="main">
 
-  <!-- ====== Contact Section ====== -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:neerudijhansilaxmi@gmail.com">neerudijhansilaxmi@gmail.com</a></p>
-    <p>Phone: <a href="tel:+919652640484">+91 9652640484</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/jhansi007" target="_blank">linkedin.com/in/jhansi007</a></p>
-    <p>GitHub: <a href="https://github.com/Jhansi20037" target="_blank">github.com/Jhansi20037</a></p>
-  </section>
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-heading" data-aos="fade-up">
+      <h2 class="section-title" id="about-heading">About</h2>
+      <div class="about-grid" style="margin-top:1rem">
+        <div class="card about-text">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <h3 style="margin:0 0 .2rem">Elevator Pitch</h3>
+              <div class="muted">Confident • Practical • Impact-focused</div>
+            </div>
+            <div style="text-align:right" class="muted">CGPA: 7.34/10</div>
+          </div>
 
-  <!-- ====== Footer ====== -->
+          <!-- Powerful about text -->
+          <p style="margin-top:.9rem;color:var(--muted)">
+            Hello — I’m <strong>Neerudi Jhansilaxmi</strong>, a Computer Science graduate with deep experience building <strong>AI-driven applications</strong>. I thrive on translating complex technical problems into production-ready systems that deliver real-world impact. My projects blend <strong>computer vision, audio signal processing, and practical ML</strong> to solve accessibility and safety problems. I’m a fast learner, team player, and obsessed with shipping reliable, maintainable code.
+          </p>
+
+          <p class="muted" style="margin-top:.6rem">Internship: Machine Learning — IBM SkillsBuild (Oct 2024). Certifications: Machine Learning (IBM SkillsBuild), Data Science (Oasis InfoByte).</p>
+
+          <div style="display:flex;gap:1rem;margin-top:.9rem;flex-wrap:wrap">
+            <a class="btn" href="#contact">Hire / Contact</a>
+            <a class="btn ghost" href="#projects">View Work</a>
+          </div>
+        </div>
+
+        <aside class="card" style="display:flex;flex-direction:column;gap:.7rem;align-items:flex-start">
+          <div class="profile-quick">
+            <div class="avatar">JN</div>
+            <div style="margin-left:.6rem">
+              <div style="font-weight:800">Neerudi Jhansilaxmi</div>
+              <div class="meta">Computer Science Graduate • AI & ML</div>
+            </div>
+          </div>
+
+          <div style="margin-top:.4rem;width:100%">
+            <div class="muted" style="font-weight:700;margin-bottom:.35rem">Quick Info</div>
+            <div class="meta">Location: Sangareddy, Telangana</div>
+            <div class="meta">Languages: English, Hindi, Telugu, Italian (conversational), Korean & Thai (basic)</div>
+            <div class="meta">Email: <a href="mailto:neerudijhansilaxmi@gmail.com">neerudijhansilaxmi@gmail.com</a></div>
+            <div class="meta">Phone: <a href="tel:+919652640484">+91 9652640484</a></div>
+            <div class="meta" style="margin-top:.4rem"><a href="https://github.com/Jhansi20037" target="_blank">github.com/Jhansi20037</a></div>
+            <div class="meta"><a href="https://www.linkedin.com/in/jhansi007" target="_blank">linkedin.com/in/jhansi007</a></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" data-aos="fade-up">
+      <h2 class="section-title">Skills</h2>
+      <div style="margin-top:1rem" class="skills-grid">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <h3 style="margin:0">Technical Skills</h3>
+              <div class="muted" style="font-size:.95rem">Languages, frameworks, tools & core CS</div>
+            </div>
+            <div class="muted" style="font-weight:700">Strength</div>
+          </div>
+
+          <div style="margin-top:.9rem">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div style="font-weight:700">Python</div>
+              <div style="font-weight:700">95%</div>
+            </div>
+            <div class="progress" data-percent="95"><i></i></div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.6rem">
+              <div style="font-weight:700">C / C++ / Java</div>
+              <div style="font-weight:700">78%</div>
+            </div>
+            <div class="progress" data-percent="78"><i></i></div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.6rem">
+              <div style="font-weight:700">AI / Machine Learning</div>
+              <div style="font-weight:700">88%</div>
+            </div>
+            <div class="progress" data-percent="88"><i></i></div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.6rem">
+              <div style="font-weight:700">Computer Vision</div>
+              <div style="font-weight:700">82%</div>
+            </div>
+            <div class="progress" data-percent="82"><i></i></div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.6rem">
+              <div style="font-weight:700">SQL / MySQL</div>
+              <div style="font-weight:700">72%</div>
+            </div>
+            <div class="progress" data-percent="72"><i></i></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 .25rem">Frameworks, Tools & Coursework</h3>
+          <div class="muted">Quick list pulled from resume</div>
+
+          <div style="margin-top:.8rem">
+            <div>
+              <span class="skill-pill">NumPy</span><span class="skill-pill">Pandas</span>
+              <span class="skill-pill">OpenCV</span><span class="skill-pill">MediaPipe</span>
+              <span class="skill-pill">Django</span><span class="skill-pill">GitHub</span>
+              <span class="skill-pill">Google Colab</span><span class="skill-pill">VS Code</span>
+              <span class="skill-pill">HTML</span><span class="skill-pill">CSS</span><span class="skill-pill">JavaScript</span>
+            </div>
+
+            <div style="margin-top:1rem;color:var(--muted);font-weight:600">Core CS</div>
+            <div class="muted" style="margin-top:.35rem">
+              Data Structures · DBMS · OOP · Operating Systems (Windows / Unix / Linux) · Software Engineering · Machine Learning
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" data-aos="fade-up">
+      <h2 class="section-title">Projects</h2>
+      <p class="muted" style="margin-top:.5rem">Selected projects demonstrating applied ML, CV, and system-building skills.</p>
+
+      <div style="margin-top:1rem" class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card" tabindex="0" data-project='{"title":"AI Virtual Mouse","desc":"A hand gesture + voice controlled virtual mouse built with MediaPipe, OpenCV and Python. Controls cursor, clicks, scrolling, volume & app management; includes OCR for text interaction.","tags":["Python","OpenCV","MediaPipe","OCR"],"github":"https://github.com/Jhansi20037/AI-VIRTUAL-MOUSE"}'>
+          <div class="project-title">AI Virtual Mouse</div>
+          <div class="project-desc muted">Gesture & voice control for touch-free computing using CV & ML.</div>
+          <div class="project-tags">
+            <span>Python</span><span>MediaPipe</span><span>OpenCV</span>
+          </div>
+          <div class="project-actions">
+            <button class="small-btn ghost" onclick="openProjectModal(this)">Details</button>
+            <a class="small-btn primary" href="https://github.com/Jhansi20037/AI-VIRTUAL-MOUSE" target="_blank">GitHub</a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card" tabindex="0" data-project='{"title":"Human Scream Detection","desc":"Audio-based scream detection using MFCCs, spectrograms and ML classifiers. Real-time alerts to assist crime-prevention systems.","tags":["Audio Processing","ML","MFCC"],"github":"https://github.com/Jhansi20037/Human-Scream-Detection-and-Analysis-for-Controlling-Crime-Rate"}'>
+          <div class="project-title">Human Scream Detection</div>
+          <div class="project-desc muted">Real-time audio detection with feature extraction (MFCC) + ML classifiers.</div>
+          <div class="project-tags">
+            <span>Python</span><span>MFCC</span><span>Scikit-learn</span>
+          </div>
+          <div class="project-actions">
+            <button class="small-btn ghost" onclick="openProjectModal(this)">Details</button>
+            <a class="small-btn primary" href="https://github.com/Jhansi20037/Human-Scream-Detection-and-Analysis-for-Controlling-Crime-Rate" target="_blank">GitHub</a>
+          </div>
+        </div>
+
+        <!-- Project 3 (portfolio) -->
+        <div class="project-card" tabindex="0" data-project='{"title":"Portfolio Website","desc":"This portfolio — single-page, responsive, with animations and interactive components. Built for GitHub Pages.","tags":["HTML","CSS","JS"],"github":"https://github.com/Jhansi20037/Portfolio"}'>
+          <div class="project-title">Portfolio Website</div>
+          <div class="project-desc muted">Interactive portfolio demonstrating UI, animations, and web skills.</div>
+          <div class="project-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+          <div class="project-actions">
+            <button class="small-btn ghost" onclick="openProjectModal(this)">Details</button>
+            <a class="small-btn primary" href="https://github.com/Jhansi20037/Portfolio" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal for project details -->
+    <div class="modal-wrap" id="modalWrap" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal" role="document" aria-labelledby="modalTitle">
+        <button class="close" onclick="closeModal()" aria-label="Close">✕</button>
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc" class="muted"></p>
+        <div id="modalTags" style="margin-top:.6rem"></div>
+        <div style="margin-top:1rem">
+          <a id="modalGH" class="btn" href="#" target="_blank">View on GitHub</a>
+          <button class="btn ghost" onclick="closeModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certs" data-aos="fade-up">
+      <h2 class="section-title">Certifications</h2>
+      <div style="margin-top:1rem" class="card cert-grid">
+        <div class="cert">
+          <strong>Machine Learning</strong><div class="muted" style="font-size:.9rem">IBM SkillsBuild</div>
+        </div>
+        <div class="cert">
+          <strong>Data Science</strong><div class="muted" style="font-size:.9rem">Oasis InfoByte</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" data-aos="fade-up">
+      <h2 class="section-title">Contact</h2>
+      <div style="margin-top:1rem" class="contact-grid">
+        <div class="card">
+          <h3 style="margin:0">Get in touch</h3>
+          <p class="muted" style="margin-top:.4rem">I'm open to internships, research collaborations, and full-time roles in AI/ML & data science. Send a quick message — I reply fast.</p>
+
+          <!-- Simple mailto fallback form -->
+          <form class="contact-form" id="contactForm" onsubmit="submitContactForm(event)">
+            <input name="name" id="name" placeholder="Your name" required />
+            <input name="email" id="email" placeholder="Your email" type="email" required/>
+            <input name="subject" id="subject" placeholder="Subject" required/>
+            <textarea name="message" id="message" placeholder="Message" required></textarea>
+            <div style="display:flex;gap:.5rem;align-items:center">
+              <button class="btn" type="submit">Send Message</button>
+              <a class="btn ghost" href="mailto:neerudijhansilaxmi@gmail.com">Email Directly</a>
+            </div>
+            <div id="formMsg" class="muted" style="margin-top:.6rem"></div>
+          </form>
+        </div>
+
+        <aside class="card contact-info">
+          <h4 style="margin:0">Contact Details</h4>
+          <p class="muted">Email: <a href="mailto:neerudijhansilaxmi@gmail.com">neerudijhansilaxmi@gmail.com</a></p>
+          <p class="muted">Phone: <a href="tel:+919652640484">+91 9652640484</a></p>
+          <p class="muted">Location: Sangareddy, Telangana</p>
+          <p class="muted">Find me: <a href="https://github.com/Jhansi20037" target="_blank">GitHub</a> · <a href="https://www.linkedin.com/in/jhansi007" target="_blank">LinkedIn</a></p>
+
+          <div style="margin-top:1rem">
+            <small class="muted">Tip: Click a project card for details. Toggle the 🌙 button to view in light mode.</small>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
   <footer>
-    <p>©️ 2025 Neerudi Jhansilaxmi | Built with ❤</p>
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:center;gap:.6rem">
+        <div class="muted">© 2025 Neerudi Jhansilaxmi</div>
+      </div>
+    </div>
   </footer>
 
-  <!-- ====== Script for animations and active nav ====== -->
-  <script>
-    // Show sections with animation when scrolling
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav a");
+  <!-- SCRIPTS -->
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    window.addEventListener("scroll", () => {
-      let current = "";
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        if (pageYOffset >= sectionTop) {
-          current = section.getAttribute("id");
-        }
-        // Animate sections
-        const sectionPos = section.getBoundingClientRect().top;
-        if (sectionPos < window.innerHeight - 50) {
-          section.classList.add("visible");
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <script>
+    // Init AOS
+    AOS.init({duration:700, once:true, offset:80});
+
+    // Typed.js for hero typing
+new Typed('#typed', {
+  strings: [
+    'AI-powered Applications.',
+    'Data-driven Solutions.',
+    'Machine Learning Models.',
+    'Computer Vision Systems.',
+    'Interactive User Experiences.',
+    'Real-world AI Solutions.'
+  ],
+  typeSpeed:40,
+  backSpeed:25,
+  backDelay:1600,
+  loop:true,
+  smartBackspace:true
+});
+
+
+    // Smooth scroll + nav active
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = [...document.querySelectorAll('section')];
+
+    function setActiveNav(){
+      let index = sections.length;
+      while(--index && window.scrollY + 130 < sections[index].offsetTop) {}
+      navLinks.forEach((link)=> link.classList.remove('active'));
+      const id = sections[index] ? sections[index].id : 'about';
+      const active = document.querySelector('.nav-links a[href="#' + id + '"]');
+      if(active) active.classList.add('active');
+    }
+    setActiveNav();
+    window.addEventListener('scroll', setActiveNav);
+
+    // Click scroll behavior for nav anchors
+    document.querySelectorAll('.nav-links a').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const href = a.getAttribute('href');
+        const el = document.querySelector(href);
+        if(!el) return;
+        window.scrollTo({top: el.offsetTop - 80, behavior:'smooth'});
+      });
+    });
+
+    // Fill progress bars when in view
+    function animateProgress(){
+      document.querySelectorAll('.progress').forEach(p=>{
+        const rect = p.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 60){
+          const percent = p.getAttribute('data-percent');
+          p.querySelector('i').style.width = percent + '%';
         }
       });
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + current) {
-          link.classList.add("active");
+    }
+    animateProgress();
+    window.addEventListener('scroll', animateProgress);
+
+    // Modal logic for projects
+    function openProjectModal(button){
+      const card = button.closest('.project-card');
+      const data = JSON.parse(card.getAttribute('data-project'));
+      document.getElementById('modalTitle').innerText = data.title;
+      document.getElementById('modalDesc').innerText = data.desc;
+      const tagWrap = document.getElementById('modalTags');
+      tagWrap.innerHTML = '';
+      (data.tags||[]).forEach(t=>{
+        const el = document.createElement('span');
+        el.style.display='inline-block';
+        el.style.marginRight='8px';
+        el.style.padding='6px 10px';
+        el.style.borderRadius='8px';
+        el.style.background='rgba(255,255,255,0.03)';
+        el.style.color='var(--muted)';
+        el.style.fontWeight='700';
+        el.innerText = t;
+        tagWrap.appendChild(el);
+      });
+      const gh = document.getElementById('modalGH');
+      gh.href = data.github || '#';
+      document.getElementById('modalWrap').style.display = 'flex';
+      document.getElementById('modalWrap').setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(){
+      document.getElementById('modalWrap').style.display = 'none';
+      document.getElementById('modalWrap').setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+    // close on outside click
+    document.getElementById('modalWrap').addEventListener('click', (e)=>{
+      if(e.target === document.getElementById('modalWrap')) closeModal();
+    });
+
+    // Simple contact form fallback using mailto
+    function submitContactForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subj = document.getElementById('subject').value.trim();
+      const msg = document.getElementById('message').value.trim();
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${msg}`);
+      const mailto = `mailto:neerudijhansilaxmi@gmail.com?subject=${encodeURIComponent(subj)}&body=${body}`;
+      // Open user's mail client
+      window.location.href = mailto;
+      document.getElementById('formMsg').innerText = "Opening your email client... If nothing opens, please email neerudijhansilaxmi@gmail.com directly.";
+    }
+
+    // Dark mode toggle (persist in localStorage)
+    const themeBtn = document.getElementById('themeToggle');
+    function applyTheme(theme){
+      if(theme === 'light'){
+        document.body.classList.add('light-mode');
+        themeBtn.innerText = '☀️';
+      } else {
+        document.body.classList.remove('light-mode');
+        themeBtn.innerText = '🌙';
+      }
+    }
+    const saved = localStorage.getItem('site-theme') || 'dark';
+    applyTheme(saved);
+    themeBtn.addEventListener('click', ()=>{
+      const current = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+      const next = current === 'light' ? 'dark' : 'light';
+      applyTheme(next);
+      localStorage.setItem('site-theme', next);
+    });
+
+    // Accessibility: allow opening project card by pressing Enter
+    document.querySelectorAll('.project-card').forEach(card=>{
+      card.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter') {
+          const btn = card.querySelector('.small-btn.ghost');
+          if(btn) openProjectModal(btn);
         }
       });
     });
+
+    // small: reveal sections on load if AOS hasn't yet
+    window.addEventListener('load', ()=>{ AOS.refresh(); setTimeout(()=>{ animateProgress(); },400) });
   </script>
 </body>
 </html>
