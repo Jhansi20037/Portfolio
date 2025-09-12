@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jhansilaxmi Neerudi | Portfolio</title>
+  <style>
+    /* ====== Global Styles ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* ====== Header ====== */
+    header {
+      background: linear-gradient(135deg, #4CAF50, #2E7D32);
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    header h1 {
+      margin-bottom: 0.5rem;
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+    }
+
+    /* ====== Navbar ====== */
+    nav {
+      position: sticky;
+      top: 0;
+      background: #333;
+      padding: 0.8rem;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav a:hover,
+    nav a.active {
+      color: #4CAF50;
+    }
+
+    /* ====== Sections ====== */
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-in-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    h2 {
+      border-bottom: 3px solid #4CAF50;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.3rem;
+      font-size: 1.8rem;
+    }
+
+    /* ====== Skills ====== */
+    .skills span {
+      background: #4CAF50;
+      color: white;
+      padding: 0.5rem 1rem;
+      margin: 0.3rem;
+      display: inline-block;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: transform 0.3s;
+    }
+    .skills span:hover {
+      transform: scale(1.1);
+    }
+
+    /* ====== Projects ====== */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .project {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+    .project h3 {
+      margin-bottom: 0.5rem;
+    }
+    .project a {
+      color: #4CAF50;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* ====== Footer ====== */
+    footer {
+      text-align: center;
+      background: #333;
+      color: white;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+    footer a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== Header ====== -->
+  <header>
+    <h1>Jhansilaxmi Neerudi</h1>
+    <p>Fresher | Software Engineer | AI & Data Science Enthusiast</p>
+  </header>
+
+  <!-- ====== Navbar ====== -->
+  <nav>
+    <a href="#about" class="active">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#resume">Resume</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- ====== About Section ====== -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hello! I’m <b>Jhansilaxmi Neerudi</b>, a Computer Science graduate with a strong passion for 
+       <b>Artificial Intelligence, Data Science, and Software Development</b>. I thrive on solving 
+       complex problems and transforming ideas into impactful, real-world solutions.</p>
+
+    <p>I have hands-on experience in building <b>AI-driven applications</b>—from intelligent virtual 
+       interfaces to crime-prevention systems—showcasing my ability to blend 
+       <b>innovation, logic, and creativity</b>. My goal is to grow as a <b>future-ready engineer</b>, 
+       continuously learning and contributing to technologies that make a difference in people’s lives.</p>
+  </section>
+
+  <!-- ====== Skills Section ====== -->
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <!-- Programming Languages -->
+    <span>Python</span><span>Java</span><span>C++</span><span>C</span>
+    <span>SQL</span><span>MySQL</span>
+    <span>HTML</span><span>CSS</span><span>JavaScript</span>
+
+    <!-- Frameworks & Libraries -->
+    <span>NumPy</span><span>Pandas</span><span>Django</span>
+
+    <!-- Developer Tools -->
+    <span>GitHub</span><span>Google Colab</span><span>Visual Studio Code</span>
+
+    <!-- Core CS & Academic Areas -->
+    <span>Data Structures</span><span>Operating Systems (Windows/Linux/Unix)</span>
+    <span>DBMS</span><span>OOP</span><span>Software Engineering</span>
+
+    <!-- AI/ML & Related -->
+    <span>Artificial Intelligence</span><span>Machine Learning</span>
+    <span>Computer Vision</span>
+  </div>
+</section>
+
+
+  <!-- ====== Projects Section ====== -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project">
+        <h3>AI Virtual Mouse</h3>
+        <p>An AI-based virtual mouse system using computer vision, hand gestures, and voice recognition.</p>
+        <a href="https://github.com/Jhansi20037/AI-VIRTUAL-MOUSE" target="_blank">🔗 View on GitHub</a>
+      </div>
+      <div class="project">
+        <h3>Human Scream Detection</h3>
+        <p>A project designed to detect and analyze human screams to assist in crime prevention.</p>
+        <a href="https://github.com/Jhansi20037/Human-Scream-Detection-and-Analysis-for-Controlling-Crime-Rate" target="_blank">🔗 View on GitHub</a>
+      </div>
+      <div class="project">
+        <h3>Portfolio Website</h3>
+        <p>This personal portfolio showcasing my skills, projects, and achievements.</p>
+        <a href="#">🌐 Current Page</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Resume Section ====== -->
+  <section id="resume">
+    <h2>Resume</h2>
+    <p><a href="resume.pdf" target="_blank">📄 Download My Resume (PDF)</a></p>
+  </section>
+
+  <!-- ====== Contact Section ====== -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:neerudijhansilaxmi@gmail.com">neerudijhansilaxmi@gmail.com</a></p>
+    <p>Phone: <a href="tel:+919652640484">+91 9652640484</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/jhansi007" target="_blank">linkedin.com/in/jhansi007</a></p>
+    <p>GitHub: <a href="https://github.com/Jhansi20037" target="_blank">github.com/Jhansi20037</a></p>
+  </section>
+
+  <!-- ====== Footer ====== -->
+  <footer>
+    <p>©️ 2025 Neerudi Jhansilaxmi | Built with ❤</p>
+  </footer>
+
+  <!-- ====== Script for animations and active nav ====== -->
+  <script>
+    // Show sections with animation when scrolling
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+        // Animate sections
+        const sectionPos = section.getBoundingClientRect().top;
+        if (sectionPos < window.innerHeight - 50) {
+          section.classList.add("visible");
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
